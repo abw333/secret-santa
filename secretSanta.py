@@ -87,7 +87,7 @@ def parse_csv(csv_filepath, ignore_list):
         emails[columns[0]] = columns[1]
         # Only people participating will be considered for assignments.
         if columns[0] not in ignore_list:
-            people[columns[0]] = columns[2:]
+            people[columns[0]] = columns[2:] # if len(columns) == 2, then columns[2:] = []
 
     # Build up a map from each person to who they can get as an assignment.
     possible_assignments = {}
