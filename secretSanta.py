@@ -79,6 +79,10 @@ def parse_csv(csv_filepath, ignore_list):
     emails = {}
     for line in lines:
         columns = line.rstrip('\n').split(',')
+        # Watch out for malformed lines. (Probably an empty line.)
+        if len(columns) < 2:
+            print 'WARNING: Malformed line: %s (make sure you have no empty lines)' % (line)
+            continue
         # We'll need everyone's email, even if they're not participating.
         emails[columns[0]] = columns[1]
         # Only people participating will be considered for assignments.
@@ -192,7 +196,7 @@ def send_emails(emails, assignments, ignore_list, server):
             if person in emails:
                 server.sendmail(FROM_EMAIL_ADDRESS, emails[person], message)
             else:
-                print 'ERROR: No email for %s.' % (person)
+                print 'WARNING: No email for %s.' % (person)
 
     # Send out emails to everyone not participating.
     for person in ignore_list:
@@ -205,7 +209,7 @@ def send_emails(emails, assignments, ignore_list, server):
             if person in emails:
                 server.sendmail(FROM_EMAIL_ADDRESS, emails[person], DID_NOT_PARTICIPATE_MESSAGE)
             else:
-                print 'ERROR: No email for %s.' % (person)
+                print 'WARNING: No email for %s.' % (person)
 
 # Runs the program.
 secret_santa(csv_filepaths_to_ignore_list)
