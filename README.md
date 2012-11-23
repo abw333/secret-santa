@@ -10,9 +10,13 @@ Usage Instructions:
 2) Create a csv file for each group of people you want to run this program on. For example, suppose that there are five people, Alan, Ben, Carlos, David, and Eli. Your csv file might look like:
 
 Alan,alan@gmail.com,Ben
+
 Ben,ben@gmail.com,Carlos
+
 Carlos,carlos@gmail.com,David
+
 David,david@gmail.com,Eli
+
 Eli,eli@gmail.com,Alan
 
 This means that Alan has already had Ben as a secret santa assignment, Ben has already had Carlos, etc.
