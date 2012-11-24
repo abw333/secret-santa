@@ -121,7 +121,7 @@ def generate_assignments(possible_assignments):
                 break
 
             # Choose randomly among the possible assignments.
-            assignments[person] = eligibles[random.randint(0, len(eligibles) - 1)]
+            assignments[person] = random.choice(eligibles)
 
         # If everyone has received an assignment, we are done.           
         if len(assignments) == len(possible_assignments):
